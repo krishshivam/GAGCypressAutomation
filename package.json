@@ -1,0 +1,19 @@
+{
+  "name": "cypressautomation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shivam",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^14.0.1"
+  },
+  "devDependencies": {
+    "cypress-mysql": "^1.0.4",
+    "cypress-postgresql": "^1.0.8"
+  },
+  "keywords": [],
+  "description": ""
+}
