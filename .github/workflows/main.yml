@@ -24,3 +24,10 @@ jobs:
 
       - name: Run Cypress Tests
         run: npx cypress run --browser chrome
+        record: true
+
+      emv:
+        CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
