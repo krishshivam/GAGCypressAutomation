@@ -13,9 +13,10 @@ describe('Launched the pre-prod website', () => {
       .should('be.visible')
       .select('Dubai');
     cy.get('select[name="home_delivery_mode_emirates"]')
-      .should('have.value', '656'); // Ensure the value corresponds to Dubai
+      .should('have.value', '656'); // Ensure the valuegit corresponds to Dubai
     cy.get('select[name="home_delivery_mode_emirates"] option:selected')
       .should('contain', 'Dubai'); // Confirm Dubai is visible
+
 
     // Click the dropdown to make it visible
     cy.get('.chosen-container').click();
@@ -33,6 +34,8 @@ describe('Launched the pre-prod website', () => {
         }
         cy.get('.confirm-delivery-mode')
           .click();
+          //added code
+
       });
   });
 });
