@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("getOtp", (phoneNumber) => {
+    return cy.task(
+      'queryDb',
+      `SELECT otp FROM ktpl_loginviasms_transaction WHERE mobile_number = '${phoneNumber}' ORDER BY created_at DESC LIMIT 1`
+    ).then((result) => {
+      return result[0].otp;
+    });
+  });
+  

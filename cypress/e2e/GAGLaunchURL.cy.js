@@ -2,7 +2,6 @@ describe('Launched the pre-prod website', () => {
   it('passes', () => {
     cy.viewport(1536, 824);
     cy.visit('https://preprod.grandiose.ae/');
-
     // Handle uncaught exceptions to prevent test failure
     Cypress.on('uncaught:exception', (err, runnable) => {
       console.error('Uncaught exception:', err);
@@ -15,17 +14,13 @@ describe('Launched the pre-prod website', () => {
     cy.get('select[name="home_delivery_mode_emirates"]')
       .should('have.value', '656'); // Ensure the valuegit corresponds to Dubai
     cy.get('select[name="home_delivery_mode_emirates"] option:selected')
-      .should('contain', 'Dubai'); // Confirm Dubai is visible
-
+      .should('contain', 'Dubai'); // Confirm Dubai is visible      
 
     // Click the dropdown to make it visible
-    cy.get('.chosen-container').click();
-
     cy.get('.chosen-search > input')
       .click({ force: true })
       .type('Jumeirah 2', { force: true });
-
-    /// Select only if it's not already selected
+    // Select only if it's not already selected
     cy.get('.chosen-results li')
       .contains('Jumeirah 2')
       .then(($option) => {
@@ -34,8 +29,15 @@ describe('Launched the pre-prod website', () => {
         }
         cy.get('.confirm-delivery-mode')
           .click();
-          //added code
 
+        // Click on Deals Page
+        cy.get(':nth-child(1) > .level-top')
+          .click();
+        // Correct assertion syntax
+        cy.title().should('eq', 'Grandiose Deals'); // Exact match
+
+        // OR: If the title contains "Grandiose Deals" but has extra text
+        cy.title().should('include', 'Grandiose Deals');
       });
   });
 });
